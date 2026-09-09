@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResolveX Admin Dashboard</title>
+
+    <link rel="stylesheet" href="CSS/admin.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="dark-theme"></body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+    <!-- TOP LOGO AREA -->
+
+   <div class="sidebar-top">
+
+    <div class="logo-section">
+
+        <div class="logo-icon">🚀</div>
+
+        <div>
+            <h1>ResolveX</h1>
+            <p>Complaint System</p>
+        </div>
+
+    </div>
+
+</div>
+
+    <!-- MENU -->
+
+    <div class="sidebar-menu">
+
+        <ul class="menu">
+
+            <li class="active">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </li>
+
+            <li onclick="goToComplaints()">
+                <i class="fa-solid fa-folder"></i>
+                Complaints
+            </li>
+
+            <li onclick="goToUsers()">
+                <i class="fa-solid fa-users"></i>
+                Users
+            </li>
+
+            <li>
+                <i class="fa-solid fa-chart-line"></i>
+                Reports
+            </li>
+
+            <li>
+                <i class="fa-solid fa-layer-group"></i>
+                Categories
+            </li>
+
+            <li>
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </li>
+
+        </ul>
+
+    </div>
+
+    <hr>
+
+    <!-- BOTTOM -->
+
+    <div class="sidebar-bottom">
+
+        <h4>OTHERS</h4>
+
+        <div class="bottom-links">
+
+            <div class="bottom-item">
+                <i class="fa-solid fa-user"></i>
+                Profile
+            </div>
+
+            <div class="bottom-item" onclick="logout()">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </div>
+
+        </div>
+
+        <div class="system-status">
+
+            <div class="status-icon">
+               <i class="fa-solid fa-shield"></i>
+            </div>
+
+            <div>
+                 <h4>System Status</h4>
+                <p>● All systems operational</p>
+            </div>
+
+           
+            
+        </div>
+
+    </div>
+
+</aside>
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div class="menu-toggle">
+
+                 <i class="fa-solid fa-bars"></i>
+
+             </div>
+
+            
+
+            <div class="top-actions">
+
+                <div class="search-box">
+                    
+                    <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search anything...">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </div>
+
+                <div class="icon-btn notification-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="badge">4</span>
+                </div>
+
+                <div class="icon-btn" onclick="toggleTheme()">
+                    <i class="fa-solid fa-moon"></i>
+                </div>
+
+               <div class="profile-box">
+
+                   <div class="profile-avatar">
+
+                      <i class="fa-solid fa-user"></i>
+
+                   <span class="online-dot"></span>
+
+                </div>
+
+                   <div class="profile-info">
+
+                        <h4>Admin User</h4>
+
+                        <p>Administrator</p>
+
+                  </div>
+
+                <i class="fa-solid fa-angle-down"></i>
+
+            </div>
+        </div>
+
+        </div>
+
+        <div class="dashboard-header">
+
+               <h1 class="dashboard-title">
+                  Admin Dashboard
+                  </h1>
+
+                    <p class="welcome-text">
+                       Welcome <span id="adminName"></span> 👋
+                   </p>
+
+        </div>
+
+        <!-- STATS -->
+
+        <div class="stats-grid">
+
+    <!-- TOTAL -->
+
+    <div class="stat-card blue">
+        <div class="card-icon">
+
+            <i class="fa-solid fa-file-lines"></i>
+
+        </div>
+
+        <div class="card-info">
+            <p>Total Complaints</p>
+
+            <h2 id="total">0</h2>
+
+            <p>All time Complaints</p>
+
+        </div>
+        <div class="growth-badge"
+id="totalGrowth">
+
+    +0%
+
+</div>
+
+<div class="mini-wave"></div>
+
+        
+
+    </div>
+
+    <!-- OPEN -->
+
+    <div class="stat-card orange">
+         <div class="card-icon">
+
+            <i class="fa-solid fa-triangle-exclamation"></i>
+
+        </div>
+
+        <div class="card-info">
+            <p>Open Complaints</p>
+
+            <h2 id="open">0</h2>
+
+            <p>Awaiting action</p>
+
+        </div>
+        <div class="growth-badge"
+id="openGrowth">
+
+    +0%
+
+</div>
+<div class="mini-wave"></div>
+
+       
+
+    </div>
+
+    <!-- RESOLVED -->
+
+    <div class="stat-card green">
+        <div class="card-icon">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+        </div>
+
+        <div class="card-info">
+            <p>Resolved Complaints</p>
+
+            <h2 id="resolved">0</h2>
+
+            <p>Successfully resolved</p>
+
+        </div>
+      <div class="growth-badge"
+id="resolvedGrowth">
+
+    +0%
+
+</div>
+
+<div class="mini-wave"></div>
+
+        
+
+    </div>
+
+    <!-- USERS -->
+
+    <div class="stat-card purple">
+        <div class="card-icon">
+
+            <i class="fa-solid fa-users"></i>
+
+        </div>
+
+        <div class="card-info">
+            <p>Total Users</p>
+
+            <h2 id="users">0</h2>
+
+            <p>Registered users</p>
+
+        </div>
+
+       <div class="growth-badge"
+id="userGrowth">
+
+    +0%
+
+</div>
+
+       <div class="mini-wave"></div>
+
+        
+
+    </div>
+
+</div>
+
+        <!-- CHARTS -->
+
+        <div class="charts-grid">
+
+            <div class="chart-card">
+
+                <div class="card-header">
+                    <h2>Complaint Status</h2>
+
+                    <button>This Month</button>
+                </div>
+
+<div class="chart-wrapper">
+
+    <div class="status-chart-layout">
+
+        <!-- DONUT -->
+        <div class="chart-container">
+
+            <canvas id="pieChart"></canvas>
+
+            <div class="chart-center">
+
+                <h1 id="totalCount">0</h1>
+                <p>Total</p>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE INFO -->
+        <div class="chart-stats">
+
+            <!-- OPEN -->
+
+            <div class="stat-item">
+
+                <div class="stat-left">
+
+                    <span class="status-dot open-dot"></span>
+
+                    <span>Open</span>
+
+                </div>
+
+                <div class="stat-right">
+
+                    <h3 id="openCount">0</h3>
+
+                    <p id="openPercent">(0%)</p>
+
+                </div>
+
+            </div>
+
+            <!-- RESOLVED -->
+
+            <div class="stat-item">
+
+                <div class="stat-left">
+
+                    <span class="status-dot resolved-dot"></span>
+
+                    <span>Resolved</span>
+
+                </div>
+
+                <div class="stat-right">
+
+                    <h3 id="resolvedCount">0</h3>
+
+                    <p id="resolvedPercent">(0%)</p>
+
+                </div>
+
+            </div>
+
+            <!-- OPEN -->
+
+            <div class="stat-item">
+
+                <div class="stat-left">
+
+                    <span class="status-dot rejected-dot"></span>
+
+                    <span>Rejected</span>
+
+                </div>
+
+                <div class="stat-right">
+
+                    <h3 id="rejectedCount">0</h3>
+
+                    <p id="rejectedPercent">(0%)</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+                
+
+            </div>
+
+            <div class="chart-card">
+
+                <div class="card-header">
+                    <h2>Complaint Analytics</h2>
+
+                    <button>This Month</button>
+                </div>
+
+                <div class="chart-wrapper">
+                    <canvas id="barChart"></canvas>
+                </div>
+
+            </div>
+
+            <div class="activity-card">
+
+                <div class="card-header">
+                    <h2>Recent Activity</h2>
+                    <a href="#">View All</a>
+                </div>
+
+                <div class="activity-item">
+                    <span class="dot green-dot"></span>
+                    New complaint submitted
+                </div>
+
+                <div class="activity-item">
+                    <span class="dot orange-dot"></span>
+                    Complaint pending review
+                </div>
+
+                <div class="activity-item">
+                    <span class="dot blue-dot"></span>
+                    New user registered
+                </div>
+
+                <div class="activity-item">
+                    <span class="dot purple-dot"></span>
+                    Complaint resolved
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-card">
+
+            <div class="card-header">
+                <h2>Latest Complaints</h2>
+                <a href="#">View All Complaints</a>
+            </div>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="latestTable"></tbody>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="JavaScript/admin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>My Complaints</title>
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+    href="CSS/user-complaints.css">
+
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+<div class="dashboard-container">
+    <aside class="sidebar">
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+
+             <i class="fa-solid fa-comment-dots"></i>
+
+            </div>
+
+            <div>
+                <h2>Complaint</h2>
+                <p>System</p>
+            </div>
+
+        </div>
+
+        <!-- MENU -->
+
+        <nav class="menu">
+
+            <a href="#" onclick="goToDashboard()">
+
+                <i class="fa-solid fa-house"></i>
+
+                Dashboard
+
+            </a>
+
+            <a href="#"
+            onclick="goToCreate()">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Create Complaint
+
+            </a>
+
+            <a href="#"
+              onclick="goToMy()">
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                My Complaints
+
+            </a>
+
+            <a href="#">
+
+                <i class="fa-regular fa-bell"></i>
+
+                Notifications
+
+                <span class="menu-badge">
+                    3
+                </span>
+
+            </a>
+
+            <a href="#">
+
+                <i class="fa-regular fa-circle-question"></i>
+
+                Help & Support
+
+            </a>
+
+            <div class="menu-line"></div>
+
+            <a href="#"
+onclick="logout()">
+
+    <i class="fa-solid fa-right-from-bracket"></i>
+
+    Logout
+
+</a>
+
+        </nav>
+
+        <!-- BOTTOM CARD -->
+
+        <div class="support-card">
+
+            
+
+            <div class="card-text">
+                <h3> Your voice matters!</h3>
+
+            <p>
+                We are here to listen and
+                resolve your issues.
+            </p>
+            </div>
+            
+            
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+<div class="topbar">
+
+        <i class="fa-solid fa-bars menu-icon"></i>
+
+        <div class="top-right">
+
+            <div class="notification">
+
+                <i class="fa-regular fa-bell"></i>
+
+                <span>3</span>
+
+            </div>
+
+            <div class="profile-section">
+
+    <!-- PROFILE ICON -->
+
+    <div class="profile-box">
+
+        <i class="fa-solid fa-user"></i>
+
+    </div>
+
+    <!-- USER NAME -->
+
+    <div class="profile-info">
+
+        <h3 id="userName"></h3>
+
+    </div>
+
+</div>
+
+        </div>
+
+    </div>
+
+        <!-- PAGE TITLE -->
+
+        <div class="page-title">
+
+            <h1>
+                My Complaints
+            </h1>
+
+            <p>
+                Dashboard /
+                My Complaints
+            </p>
+
+        </div>
+
+        <!-- COMPLAINT LIST -->
+
+        <div id="complaintContainer">
+
+            <!-- JS DATA -->
+
+        </div>
+
+    </main>
+
+    <!-- JS -->
+
+    <script src="JavaScript/user-complaints.js"></script>
+
+</div>
+
+</body>
+</html>
